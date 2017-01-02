@@ -1,6 +1,5 @@
 title: XKNX
-subtitle: Control your KNX devices with Python
-description: A Python library for the KNX protocol
+description: Control your KNX devices with Python
 
 theme: jekyll-theme-minimal
 
