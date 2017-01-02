@@ -4,7 +4,7 @@ XKNX
 Introduction
 ------------
 
-XKNX gives you full congrol of your KNX devices:
+XKNX gives you full control of your KNX devices:
 
 ````python
 from xknx import XKNX,Config
