@@ -1,6 +1,13 @@
 XKNX
 ====
 
+Installation
+------------
+
+````
+sudo pip3 install xknx
+````` 
+
 Introduction
 ------------
 
