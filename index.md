@@ -4,6 +4,11 @@ layout: default
 
 # [](#header-1)Overview
 
+[KNX](https://en.wikipedia.org/wiki/KNX_(standard)) is network communications protocol for building automation.
+
+XKNX is a Python library for reading and writing KNX/IP packets. 
+
+
 ## [](#header-2)Installation
 
 ```bash
