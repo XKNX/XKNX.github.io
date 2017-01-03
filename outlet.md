@@ -71,7 +71,7 @@ outlet.do("off")
 print(outlet.state)
 
 # Requesting state via KNX GROUP WRITE
-outlet.request_state()
+outlet.sync_state()
 ```
 
 

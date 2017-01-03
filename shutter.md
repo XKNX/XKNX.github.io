@@ -94,7 +94,7 @@ shutter.do("down")
 shutter.do("short_down")
 
 # Requesting state via KNX GROUP WRITE
-shutter.request_state()
+shutter.sync_state()
 
 ```
 
