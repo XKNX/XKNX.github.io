@@ -1,19 +1,20 @@
-XKNX
-====
+---
+layout: default
+---
 
-Installation
-------------
+# [](#header-1)XKNX
 
-````
+# [](#header-2)Installation
+
+```bash
 sudo pip3 install xknx
-````` 
+```` 
 
-Introduction
-------------
+# [](#header-2)Introduction
 
 XKNX gives you full control of your KNX devices:
 
-````python
+```python
 from xknx import XKNX,Config
 
 xknx = XKNX()
@@ -22,5 +23,5 @@ Config(xknx).read()
 xknx.start()
 xknx.devices.device_by_name("Livingroom.Outlet_1").set_on()
 xknx.join()
-````
+```
 
