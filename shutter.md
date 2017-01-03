@@ -13,12 +13,13 @@ Shutters are simple representations of blind/roller shutter actuators. With XKNX
 ```python
 from xknx import XKNX,Shutter
 
-# Generate outlet
+# Generate shutter
 xknx = XKNX()
+xknx.start()
 shutter = Shutter(xknx, 'TestShutter', {'group_address_long':'1/2/1','group_address_short':'1/2/2','group_address_position':'1/2/3','group_address_position_feedback':'1/2/4','travelling_time_down': 50, 'travelling_time_up': 60})
 xknx.devices.devices.append(shutter)
 
-# Accessing outlet
+# Accessing shutter
 xknx.devices.device_by_name("TestShutter").set_up()
 
 # Wait until all events are processed

@@ -55,6 +55,7 @@ xknx.join()
 from xknx import XKNX,Outlet
 
 xknx = XKNX()
+xknx.start()
 outlet = Outlet(xknx, "TestOutlet", {'group_address':'1/2/3'})
 
 # Switching outlet on
