@@ -37,6 +37,10 @@ groups:
         General.Time: {group_address: "2/1/2"}
 ```
 
+## [](#header-2)Daemon mode
+
+When XKNX is started in [daemon mode](/daemon), with START_STATE_UPDATER enabled, XKNX will automatically send the time to the KNX bus with the `sync_state`-loop. 
+
 ```python
 from xknx import XKNX,Config
 
