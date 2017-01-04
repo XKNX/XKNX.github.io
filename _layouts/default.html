@@ -51,7 +51,11 @@
         <p><a href="/home_assistant">Home Assistant Plugin</a></p>
 	<p/>
 	<p><a href="/help">Getting Help</a></p>
-
+	<p/>
+	<p/>
+	<p>
+	<small>Hosted on GitHub Pages</small>
+	</p>
       </header>
 
       <section>
@@ -60,23 +64,10 @@
 
       </section>
       <footer>
-        <p><small>Hosted on GitHub Pages &mdash; Theme by <a href="https://github.com/orderedlist">orderedlist</a></small></p>
       </footer>
     </div>
     <script src="{{ '/assets/js/scale.fix.js' | relative_url }}"></script>
 
 
-  {% if site.google_analytics %}
-    <script type="text/javascript">
-      var gaJsHost = (("https:" == document.location.protocol) ? "https://ssl." : "http://www.");
-      document.write(unescape("%3Cscript src='" + gaJsHost + "google-analytics.com/ga.js' type='text/javascript'%3E%3C/script%3E"));
-    </script>
-    <script type="text/javascript">
-      try {
-        var pageTracker = _gat._getTracker("{{ site.google_analytics }}");
-      pageTracker._trackPageview();
-      } catch(err) {}
-    </script>
-  {% endif %}
   </body>
 </html>
