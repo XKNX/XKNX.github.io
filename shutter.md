@@ -17,13 +17,13 @@ from xknx import XKNX,Shutter
 xknx = XKNX()
 xknx.start()
 shutter = Shutter(xknx,
-		  'TestShutter',
-		  group_address_long='1/2/1',
-		  group_address_short='1/2/2',
-		  group_address_position='1/2/3',
-		  group_address_position_feedback='1/2/4',
-		  travel_time_down=50,
-		  travel_time_up=60)
+                  'TestShutter',
+                  group_address_long='1/2/1',
+                  group_address_short='1/2/2',
+                  group_address_position='1/2/3',
+                  group_address_position_feedback='1/2/4',
+                  travel_time_down=50,
+                  travel_time_up=60)
 
 xknx.devices.devices.append(shutter)
 
@@ -64,13 +64,13 @@ from xknx import XKNX,Shutter
 
 xknx = XKNX()
 shutter = Shutter(xknx,
-		  'TestShutter',
-		  group_address_long='1/2/1',
-		  group_address_short='1/2/2',
-		  group_address_position='1/2/3',
-		  group_address_position_feedback='1/2/4',
-		  travel_time_down=50,
-		  travel_time_up=60)
+                  'TestShutter',
+                  group_address_long='1/2/1',
+                  group_address_short='1/2/2',
+                  group_address_position='1/2/3',
+                  group_address_position_feedback='1/2/4',
+                  travel_time_down=50,
+                  travel_time_up=60)
 
 # Moving to up position
 shutter.set_up()

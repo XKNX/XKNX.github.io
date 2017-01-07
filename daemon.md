@@ -62,7 +62,7 @@ xknx = XKNX()
 Config(xknx).read()
 
 xknx.start(True,
-	   telegram_received_callback=telegram_received_callback)
+           telegram_received_callback=telegram_received_callback)
 ```
 
 
