@@ -17,11 +17,11 @@ from xknx import XKNX,Time
 xknx = XKNX()
 xknx.start()
 
-time = Time(xknx, "TimeTest", {'group_address':'1/2/3'})
+time = Time(xknx, 'TimeTest', group_address='1/2/3')
 xknx.devices.devices.append(time)
 
 # Sending time to knx bus
-xknx.devices.device_by_name("TimeTest").sync_state()
+xknx.devices.device_by_name('TimeTest').sync_state()
 
 # Wait until all events are processed
 xknx.join()
@@ -34,7 +34,7 @@ Time objects are usually configured via [`xknx.yaml`](/configuration):
 ```yaml
 groups:
     time:
-        General.Time: {group_address: "2/1/2"}
+        General.Time: {group_address: '2/1/2'}
 ```
 
 ## [](#header-2)Daemon mode
@@ -59,7 +59,7 @@ xknx.start(True)
 from xknx import XKNX,Time
 
 xknx = XKNX()
-time = Time(xknx, "TimeTest", {'group_address':'1/2/3'})
+time = Time(xknx, 'TimeTest', group_address='1/2/3')
 
 # Sending Time to KNX bus 
 time.sync_state()

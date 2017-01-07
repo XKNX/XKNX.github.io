@@ -15,11 +15,11 @@ from xknx import XKNX,Outlet
 
 # Generate outlet
 xknx = XKNX()
-outlet = Outlet(xknx, "TestOutlet", {'group_address':'1/2/3'})
+outlet = Outlet(xknx, 'TestOutlet', group_address='1/2/3')
 xknx.devices.devices.append(outlet)
 
 # Accessing outlet
-xknx.devices.device_by_name("TestOutlet").set_on()
+xknx.devices.device_by_name('TestOutlet').set_on()
 
 # Wait until all events are processed
 xknx.join()
@@ -32,8 +32,8 @@ Outlets are usually configured via [`xknx.yaml`](/configuration):
 ```yaml
 groups:
     outlet:
-        Livingroom.Outlet_1: {group_address: "1/3/1"}
-        Livingroom.Outlet_2: {group_address: "1/3/2"} 
+        Livingroom.Outlet_1: {group_address: '1/3/1'}
+        Livingroom.Outlet_2: {group_address: '1/3/2'} 
 ```
 
 ```python
@@ -44,7 +44,7 @@ xknx = XKNX()
 Config(xknx).read()
 
 xknx.start()
-xknx.devices.device_by_name("Livingroom.Outlet_1").set_on()
+xknx.devices.device_by_name('Livingroom.Outlet_1').set_on()
 xknx.join()
 ```
 
@@ -56,7 +56,7 @@ from xknx import XKNX,Outlet
 
 xknx = XKNX()
 xknx.start()
-outlet = Outlet(xknx, "TestOutlet", {'group_address':'1/2/3'})
+outlet = Outlet(xknx, 'TestOutlet', group_address='1/2/3')
 
 # Switching outlet on
 outlet.set_on()
@@ -64,9 +64,9 @@ outlet.set_on()
 # Switching outlet off
 outlet.set_off()
 
-# Accessing outlet via "do"
-outlet.do("on")
-outlet.do("off")
+# Accessing outlet via 'do'
+outlet.do('on')
+outlet.do('off')
 
 # Accessing state
 print(outlet.state)
