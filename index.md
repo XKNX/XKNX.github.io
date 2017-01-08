@@ -10,6 +10,8 @@ layout: default
 xknx.devices.device_by_name('Livingroom.Outlet_1').set_on()
 ````
 
+XKNX also contains a [Plugin](http://xknx.io/home_assistant) for the [Home-Assistant](https://home-assistant.io/) automation plattform
+
 ## [](#header-2)Installation
 
 ```bash
