@@ -4,7 +4,7 @@ layout: default
 
 # [](#header-1)Overview
 
-[KNX](https://en.wikipedia.org/wiki/KNX_(standard)) is network communications protocol for building automation. XKNX is a python wrapper around this protocol to allow easy scripting of your KNX devices.
+[KNX](https://en.wikipedia.org/wiki/KNX_(standard)) is network communications protocol for building automation. XKNX is a python wrapper around this protocol to allow easy scripting of your KNX devices:
 
 ```python
 xknx.devices.device_by_name('Livingroom.Outlet_1').set_on()
