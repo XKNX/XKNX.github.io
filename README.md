@@ -7,7 +7,9 @@ This is the source for the [XKNX website](http://xknx.io).
 Run
 
 ```bash
-$ rake preview
+bundle exec jekyll build
+bundle exec jekyll serve
+
 ```
 
 and open [http://127.0.0.1:4000](http://127.0.0.1:4000)
