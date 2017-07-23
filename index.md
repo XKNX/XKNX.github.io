@@ -46,6 +46,8 @@ loop.run_until_complete(main())
 loop.close()
 ```
 
+For more examples please check out the [examples page](https://github.com/XKNX/xknx/tree/master/examples)
+
 # [](#header-1)Getting Help
 
 For questions, feature requests, bugreports wither join the [XKNX chat on Discord](https://discord.gg/5XARFNT) or write an [email](mailto:xknx@xknx.io).
