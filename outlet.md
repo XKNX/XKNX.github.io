@@ -11,18 +11,11 @@ Outlets are simple representations of binary actors. They mainly support switchi
 ## [](#header-2)Example
 
 ```python
-from xknx import XKNX,Outlet
-
-# Generate outlet
-xknx = XKNX()
 outlet = Outlet(xknx, 'TestOutlet', group_address='1/2/3')
-xknx.devices.devices.append(outlet)
+xknx.devices.add(outlet)
 
 # Accessing outlet
 xknx.devices['TestOutlet'].set_on()
-
-# Wait until all events are processed
-xknx.join()
 ``` 
 
 ## [](#header-2)Configuration via **xknx.yaml**
@@ -36,24 +29,10 @@ groups:
         Livingroom.Outlet_2: {group_address: '1/3/2'} 
 ```
 
-```python
-from xknx import XKNX
-
-xknx = XKNX(config="xknx.yaml")
-
-xknx.start()
-xknx.devices['Livingroom.Outlet_1'].set_on()
-xknx.join()
-```
-
 ## [](#header-2)Interface
 
 
 ```python
-from xknx import XKNX,Outlet
-
-xknx = XKNX()
-xknx.start()
 outlet = Outlet(xknx, 'TestOutlet', group_address='1/2/3')
 
 # Switching outlet on
@@ -70,7 +49,7 @@ outlet.do('off')
 print(outlet.state)
 
 # Requesting state via KNX GROUP WRITE
-outlet.sync_state()
+outlet.sync()
 ```
 
 

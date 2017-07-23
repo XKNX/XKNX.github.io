@@ -15,9 +15,6 @@ The logic within switches can further handle if a button is pressed shortly or n
 ## [](#header-2)Example
 
 ```python
-from xknx import XKNX, Switch, Action, Outlet
-
-xknx = XKNX()
 outlet = Outlet(xknx, 'TestOutlet', group_address='1/2/3')
 xknx.devices.devices.append(outlet)
 
@@ -34,9 +31,7 @@ action_off = Action(
     target='TestOutlet',
     method='off')
 switch.actions.append(action_off)
-xknx.devices.devices.append(switch)
-
-xknx.start(True)
+xknx.devices.add(switch)
 ``` 
 
 ## [](#header-2)Configuration via **xknx.yaml**
