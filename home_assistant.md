@@ -11,10 +11,6 @@ XKNX interacts easily with Home Assitant but is not (yet) directly integrated in
 
 ## [](#header-2)Installation
 
-Clone XKNX library to your home directory:
-
-```
-
 *Option 1*: Copy plugin files to your local homassistant configuration directory (`~/.homeassistant/custom_components`):
 
 ```bash
