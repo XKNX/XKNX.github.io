@@ -32,14 +32,14 @@ Add the following section to your home assistant configuration (`~/.homeassistan
 
 ```yaml
 xknx:
-    config_file: /home/julius/xknx/xknx.yaml
+    config_file: '/path/to/xknx.yaml'
 ```
 
 If the autodetection of the KNX/IP device does not work you can specify ip/port of the tunneling device:
 
 ```yaml
 xknx:
-  config_file: "/Users/julius/Desktop/homeautomation/xknx/xknx.yaml"
+  config_file: '/path/to/xknx.yaml'
   tunneling:
     host: '192.168.2.23'
     port: 3671
@@ -49,7 +49,7 @@ If you want to connect via KNX/IP Routing
 
 ```yaml
 xknx:
-  config_file: "/Users/julius/Desktop/homeautomation/xknx/xknx.yaml"
+  config_file: '/path/to/xknx.yaml'
   routing:
      local_ip: '192.168.2.109'
 ```
