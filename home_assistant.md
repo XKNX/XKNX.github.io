@@ -13,20 +13,19 @@ XKNX interacts easily with Home Assitant but is not (yet) directly integrated in
 
 Clone XKNX library to your home directory:
 
-```bash
-cd $(HOME)
-git clone https://github.com/XKNX/xknx.git
 ```
 
 *Option 1*: Copy plugin files to your local homassistant configuration directory (`~/.homeassistant/custom_components`):
 
 ```bash
+git clone https://github.com/XKNX/xknx.git
 make install -C ~/xknx/home-assistant-plugin
 ```
 
 *Option 2*: Create a symbolic link to your custom components directory. This only works of you only have the XKNX custom component installed, but has the advantage that it is easier to keep sync of updates:
 
 ```bash
+git clone https://github.com/XKNX/xknx.git
 mkdir -p ~/.homeassistant
 ln -s ~/xknx/home-assistant-plugin/custom_components ~/.homeassistant/custom_components
 ```
@@ -40,32 +39,10 @@ xknx:
 ```
 
 
-## [](#header-2)Running
+## [](#header-2)Cloning XKNX-Homeassistant:
 
-Add the location of the xknx library to `PYTHONPATH` when starting hass:
-
-```
-PYTHONPATH="${PYTHONPATH}:${HOME}/xknx" hass
+```bash
+git clone git@github.com:XKNX/home-assistant.git
 ```
 
-
-
-#####
-
-systemd:
-
-```
-# cat /etc/systemd/system/home-assistant@hass.service
-[Unit]
-Description=Home Assistant
-After=network.target
-
-[Service]
-Type=simple
-User=%i
-ExecStart=/usr/bin/env PYTHONPATH="${PYTHONPATH}:${HOME}/xknx" /usr/local/bin/hass
-
-[Install]
-WantedBy=multi-user.target
-```
-
+and follow instructions on https://home-assistant.io/developers/development_environment/ (not executing the `git clone` command a second time).
