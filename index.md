@@ -12,8 +12,7 @@ XKNX is an Asynchronous  Python library for reading and writing [KNX](https://en
 * Fully Asynchronous, see [PEP 3156](https://www.python.org/dev/peps/pep-3156/)
 * Easy to interact abstraction for devices
 * Clean abstraction for easy implementation of building automation
-
-XKNX also contains a [Plugin](http://xknx.io/home_assistant) for the [Home-Assistant](https://home-assistant.io/) automation plattform
+* [Plugin](http://xknx.io/home_assistant) for the [Home-Assistant](https://home-assistant.io/) automation plattform
 
 ## [](#header-2)Installation
 
