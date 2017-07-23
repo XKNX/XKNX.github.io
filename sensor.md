@@ -24,26 +24,5 @@ groups:
 
 When XKNX is started in [daemon mode](/xknx), with START_STATE_UPDATER enabled, XKNX will automatically request the states from KNX bus with the `sync_state`-loop. 
 
-```python
-from xknx import XKNX
-
-xknx = XKNX(config="xknx.yaml")
-
-# Starting XKNX in daemon mode
-xknx.start(True)
-```
-
-## [](#header-2)Interface
-
-
-#```python
-#from xknx import XKNX,Time
-#
-#xknx = XKNX()
-#time = Time(xknx, 'TimeTest', group_address='1/2/3')
-#
-## Sending Time to KNX bus 
-#time.sync_state()
-#```
 
 
