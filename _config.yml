@@ -12,7 +12,7 @@ theme: jekyll-theme-minimal
 
 show_downloads: true
 
-github:
+xknx:
     zip_url: "https://github.com/XKNX/xknx/archive/master.zip"
     tar_url: "https://github.com/XKNX/xknx/archive/master.tar.gz"
     repository_url: "http://github.com/XKNX/xknx"
