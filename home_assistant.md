@@ -30,6 +30,7 @@ mkdir -p ~/.homeassistant
 ln -s ~/xknx/home-assistant-plugin/custom_components ~/.homeassistant/custom_components
 ```
 
+## [](#header-2)Configuration
 
 Add the following section to your home assistant configuration (`~/.homeassistant/configuration.yaml`).  `config_file` should define the absolute path of your `xknx.yaml` )
 
