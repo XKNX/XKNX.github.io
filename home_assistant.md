@@ -33,11 +33,29 @@ ln -s ~/xknx/home-assistant-plugin/custom_components ~/.homeassistant/custom_com
 
 Add the following section to your home assistant configuration (`~/.homeassistant/configuration.yaml`).  `config_file` should define the absolute path of your `xknx.yaml` )
 
-```
+```yaml
 xknx:
     config_file: /home/julius/xknx/xknx.yaml
 ```
 
+If the autodetection of the KNX/IP device does not work you can specify ip/port of the tunneling device:
+
+```yaml
+xknx:
+  config_file: "/Users/julius/Desktop/homeautomation/xknx/xknx.yaml"
+  tunneling:
+    host: '192.168.2.23'
+    port: 3671
+```
+
+If you want to connect via KNX/IP Routing
+
+```yaml
+xknx:
+  config_file: "/Users/julius/Desktop/homeautomation/xknx/xknx.yaml"
+  routing:
+     local_ip: '192.168.2.109'
+```
 
 ## [](#header-2)Cloning XKNX-Homeassistant:
 
