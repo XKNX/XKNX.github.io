@@ -41,7 +41,7 @@ groups:
 
 ## [](#header-2)Daemon mode
 
-When XKNX is started in [daemon mode](/daemon), with START_STATE_UPDATER enabled, XKNX will automatically request the states from KNX bus with the `sync_state`-loop. 
+When XKNX is started in [daemon mode](/xknx), with START_STATE_UPDATER enabled, XKNX will automatically request the states from KNX bus with the `sync_state`-loop. 
 
 ```python
 from xknx import XKNX
