@@ -21,7 +21,7 @@ time = Time(xknx, 'TimeTest', group_address='1/2/3')
 xknx.devices.devices.append(time)
 
 # Sending time to knx bus
-xknx.devices.device_by_name('TimeTest').sync_state()
+xknx.devices['TimeTest'].sync_state()
 
 # Wait until all events are processed
 xknx.join()
@@ -42,11 +42,9 @@ groups:
 When XKNX is started in [daemon mode](/daemon), with START_STATE_UPDATER enabled, XKNX will automatically send the time to the KNX bus with the `sync_state`-loop. 
 
 ```python
-from xknx import XKNX,Config
+from xknx import XKNX
 
-xknx = XKNX()
-
-Config(xknx).read()
+xknx = XKNX(config="xknx.yaml")
 
 # Starting XKNX in daemon mode
 xknx.start(True)

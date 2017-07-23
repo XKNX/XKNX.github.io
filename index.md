@@ -2,35 +2,50 @@
 layout: default
 ---
 
-# [](#header-1)Overview
+# [](#header-1)XKNX: Asynchronous Python library for KNX
 
-[KNX](https://en.wikipedia.org/wiki/KNX_(standard)) is network communications protocol for building automation. XKNX is a python wrapper around this protocol to allow easy scripting of your KNX devices:
+XKNX is an Asynchronous  Python library for reading and writing [KNX](https://en.wikipedia.org/wiki/KNX_(standard))/IP packets. 
 
-```python
-xknx.devices.device_by_name('Livingroom.Outlet_1').set_on()
-````
+## [](#header-2)Installation
+
+* Connects to KNX Routing and Tunnel devices
+* Fully Asynchronous, see [PEP 3156](https://www.python.org/dev/peps/pep-3156/)
+* Easy to interact abstraction for devices
+* Clean abstraction for easy implementation of building automation
 
 XKNX also contains a [Plugin](http://xknx.io/home_assistant) for the [Home-Assistant](https://home-assistant.io/) automation plattform
 
 ## [](#header-2)Installation
 
+XKNX depends on Python >= 3.5. (All prior versions of Python < 3.5 have a bug in their multicast implementation.)
+
 ```bash
 sudo pip3 install xknx
 ``` 
 
-## [](#header-2)Introduction
-
-XKNX gives you full control of your KNX devices:
+## [](#header-2)Hello World
 
 ```python
-from xknx import XKNX,Config
+import asyncio
+from xknx import XKNX, Light
 
-xknx = XKNX()
-Config(xknx).read()
-xknx.start()
+async def main():
+    xknx = XKNX()
+    await xknx.start()
+    light = Light(xknx,
+                  name='HelloWorldLight',
+                  group_address_switch='1/0/9')
+    light.set_on()
+    await asyncio.sleep(2)
+    light.set_off()
+    await xknx.stop()
 
-xknx.start()
-xknx.devices.device_by_name('Livingroom.Outlet_1').set_on()
-xknx.join()
+
+# pylint: disable=invalid-name
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+loop.close()
 ```
+
+
 

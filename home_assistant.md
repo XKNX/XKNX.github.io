@@ -48,3 +48,24 @@ Add the location of the xknx library to `PYTHONPATH` when starting hass:
 PYTHONPATH="${PYTHONPATH}:${HOME}/xknx" hass
 ```
 
+
+
+#####
+
+systemd:
+
+```
+# cat /etc/systemd/system/home-assistant@hass.service
+[Unit]
+Description=Home Assistant
+After=network.target
+
+[Service]
+Type=simple
+User=%i
+ExecStart=/usr/bin/env PYTHONPATH="${PYTHONPATH}:${HOME}/xknx" /usr/local/bin/hass
+
+[Install]
+WantedBy=multi-user.target
+```
+

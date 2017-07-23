@@ -19,12 +19,12 @@ light = Light(xknx,
               name='TestLight',
               group_address_switch='1/2/3',
               group_address_dimm='1/2/4',
-              group_address_dimm_feedback='1/2/5')
+              group_address_brightness='1/2/5')
 xknx.devices.devices.append(light)
 
 # Accessing light
-xknx.devices.device_by_name('TestLight').set_on()
-xknx.devices.device_by_name('TestLight').set_brightness(23)
+xknx.devices['TestLight'].set_on()
+xknx.devices['TestLight'].set_brightness(23)
 
 # Wait until all events are processed
 xknx.join()
@@ -39,8 +39,8 @@ groups:
     light:
 
         # Lights with dimming
-        Kitchen.Light_1:     {group_address_switch: '1/6/1', group_address_dimm: '1/6/2', group_address_dimm_feedback: '1/6/3'}
-        Diningroom.Light_1:  {group_address_switch: '1/6/4', group_address_dimm: '1/6/5', group_address_dimm_feedback: '1/6/6'}
+        Kitchen.Light_1:     {group_address_switch: '1/6/1', group_address_dimm: '1/6/2', group_address_brightness: '1/6/3'}
+        Diningroom.Light_1:  {group_address_switch: '1/6/4', group_address_dimm: '1/6/5', group_address_brightness: '1/6/6'}
 
         # Light without dimming
         Living-Room.Light_1: {group_address_switch: '1/6/7'}
@@ -59,7 +59,7 @@ light = Light(xknx,
               name='TestLight',
               group_address_switch='1/2/3',
               group_address_dimm='1/2/4',
-              group_address_dimm_feedback='1/2/5')
+              group_address_brightness='1/2/5')
 
 # Switching light on
 light.set_on()

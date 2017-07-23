@@ -19,7 +19,7 @@ outlet = Outlet(xknx, 'TestOutlet', group_address='1/2/3')
 xknx.devices.devices.append(outlet)
 
 # Accessing outlet
-xknx.devices.device_by_name('TestOutlet').set_on()
+xknx.devices['TestOutlet'].set_on()
 
 # Wait until all events are processed
 xknx.join()
@@ -37,14 +37,12 @@ groups:
 ```
 
 ```python
-from xknx import XKNX,Config
+from xknx import XKNX
 
-xknx = XKNX()
-
-Config(xknx).read()
+xknx = XKNX(config="xknx.yaml")
 
 xknx.start()
-xknx.devices.device_by_name('Livingroom.Outlet_1').set_on()
+xknx.devices['Livingroom.Outlet_1'].set_on()
 xknx.join()
 ```
 
