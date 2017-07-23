@@ -23,8 +23,8 @@ light = Light(xknx,
 xknx.devices.devices.append(light)
 
 # Accessing light
-xknx.devices.device_by_name('TestLight').set_on()
-xknx.devices.device_by_name('TestLight').set_brightness(23)
+xknx.devices['TestLight'].set_on()
+xknx.devices['TestLight'].set_brightness(23)
 
 # Wait until all events are processed
 xknx.join()

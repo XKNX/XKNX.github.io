@@ -28,7 +28,7 @@ shutter = Shutter(xknx,
 xknx.devices.devices.append(shutter)
 
 # Accessing shutter
-xknx.devices.device_by_name('TestShutter').set_up()
+xknx.devices['TestShutter'].set_up()
 
 # Wait until all events are processed
 xknx.join()
@@ -45,14 +45,12 @@ groups:
 ```
 
 ```python
-from xknx import XKNX,Config
+from xknx import XKNX
 
-xknx = XKNX()
-
-Config(xknx).read()
+xknx = XKNX(config="xknx.yaml")
 
 xknx.start()
-xknx.devices.device_by_name('Livingroom.Shutter_1').set_up()
+xknx.devices['Livingroom.Shutter_1'].set_up()
 xknx.join()
 ```
 
