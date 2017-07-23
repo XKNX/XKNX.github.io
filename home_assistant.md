@@ -43,6 +43,7 @@ xknx:
   tunneling:
     host: '192.168.2.23'
     port: 3671
+    local_ip: '192.168.2.109'
 ```
 
 If you want to connect via KNX/IP Routing
@@ -51,7 +52,7 @@ If you want to connect via KNX/IP Routing
 xknx:
   config_file: '/path/to/xknx.yaml'
   routing:
-     local_ip: '192.168.2.109'
+    local_ip: '192.168.2.109'
 ```
 
 ## [](#header-2)Cloning XKNX-Homeassistant:
