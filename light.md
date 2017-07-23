@@ -11,10 +11,6 @@ The Light object is either a representation of a binary or a dimm actor.
 ## [](#header-2)Example
 
 ```python
-from xknx import XKNX, Light
-
-# Generate light
-xknx = XKNX()
 light = Light(xknx,
               name='TestLight',
               group_address_switch='1/2/3',
@@ -25,9 +21,6 @@ xknx.devices.devices.append(light)
 # Accessing light
 xknx.devices['TestLight'].set_on()
 xknx.devices['TestLight'].set_brightness(23)
-
-# Wait until all events are processed
-xknx.join()
 ``` 
 
 ## [](#header-2)Configuration via **xknx.yaml**
@@ -51,10 +44,6 @@ groups:
 
 
 ```python
-from xknx import XKNX, Light
-
-xknx = XKNX()
-xknx.start()
 light = Light(xknx,
               name='TestLight',
               group_address_switch='1/2/3',
@@ -82,7 +71,7 @@ print(light.brightness)
 
 
 # Requesting state via KNX GROUP WRITE
-light.sync_state()
+light.state()
 ```
 
 

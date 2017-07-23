@@ -2,69 +2,122 @@
 layout: default
 ---
 
-# [](#header-1)Daemon
+# [](#header-1)The XKNX Object
 
-XKNX starts several processes in the background. These processes are:
+# [](#header-2)Overview
 
-* A telegram queue for handling a queue of telegrams.
-* A Multicast daemon which is listening to the KNX mulitcast address and queuing received telegrams
-* An update thread which calls the `sync_state` function of all devices. `sync_state` either writes a KNX-`GROUP_READ` to all connected devices or e.g. sends the time to the KNX bus (Time device).
+The `XKNX()` object is the core element of any XKNX installation. It should be only initialized once per implementation. The XKNX object is responsible for:
 
-## [](#header-2)Start of daemon
+* connectiong to a KNX/IP device and managing the connection
+* processing all incoming KNX telegrams
+* organizing all connected devices and keeping their state
+* updating all connected devices from time to time
+* keeping the global configuration
 
-The XKNX Daemon is started via the start function:
-
-````python
-from xknx import XKNX
-xknx = XKNX(config="xknx.yaml")
-xknx.start()
-````
-
-If the start() function should not return and wait until the process is stopped simply use:
+# [](#header-2)Initialization
 
 ```python
-xknx.start(True)
-````
+xknx = XKNX(config='xknx.yaml',
+            loop=loop,
+            own_address=Address,
+            telegram_received_cb=function1,
+            device_updated_cb=function2):
+```
 
-## [](#header-2)Finetune which threads to be be started
+The constructor of the XKNX object takes several parameters:
 
-`xknx.start()` takes a start argument to control which threads to be started. The default is to start all available threads.
+* `config` defines a path to the local [XKNX.yaml](/configuration).
+* `loop` points to the asyncio.loop object. Of not specified it uses `asyncio.get_event_loop()`.
+* `own_address` may be used to specify the physical KNX address of the XKNX daemon. If not speficied it uses `15.15.250`.
+* `telegram_received_cb` is a callback which is called after every received KNX telegram. See [callbacks](#callbacks) documentation for details.
+* `device_updated_cb` is a callback after a [XKNX device](#devices) was updated. See [callbacks](#callbacks) documentation for details.
 
-To start only telegram queue and state updater do:
-
-````python
-xknx.start(start=XKNX.START_TELEGRAM_QUEUE|XKNX.START_STATE_UPDATER)
-````
-
-## [](#header-2)Callback
-
-You can also specify a callback called when a new telegram was received:
+# [](#header-2)Starting
 
 ```python
-from xknx import XKNX
-import time
+await xknx.start(state_updater=False, daemon_mode=False)
+```
 
-def device_updated_callback( xknx, device):
+`xknx.start()` will search for KNX/IP devices in the network and either build a KNX/IP-Tunnel or open a mulitcast KNX/IP-Routing connection. `start()` will take the following paramters
 
-    print('Callback received from {0}'.format(device.name))
+* if `state_updater` is set, XKNX will start an asynchronous process for syncing the states of all connected devices every hour
+* if `daemon_mode` is set, start will only stop if Control-X is pressed. This function is useful for using XKNX as a daemon, e.g. for using the callback functions or using the internal action logic.
 
-    if (device.name == 'Livingroom.Switch_1' ):
-        outlet = xknx.devices['Livingroom.Outlet_1']
-        if device.is_on():
-            outlet.set_on()
-        elif device.is_off():
-            outlet.set_off()
+# [](#header-2)Stopping
 
+```python
+await xknx.stop()
+```
 
-xknx = XKNX()
+Will disconnect from tunneling devices and stop the different queues.
 
-xknx = XKNX(config="xknx.yaml")
+# [](#header-2)Devices
 
-xknx.start(True,
-           device_updated_callback=device_updated_callback)
+The XKNX may keep all devices in a local storage named `devices`. All devices may be accessed by their name: `xknx.devices['NameOfDevice']`. If XKNX receives an update via KNX GROUP WRITE the device is updated automatically.
+
+Example:
+
+```python
+outlet = Outlet(xknx,
+                name='TestOutlet',
+                group_address='1/1/11')
+xknx.devices.add(outlet)
+
+xknx.devices['TestOutlet'].set_on()
+xknx.devices['TestOutlet'].set_off()
 ```
 
 
-## [](#header-2)Graceful exit of process
+# [](#header-2)Callbacks
 
-`xknx.join()` waits until all telegrams were processed.
+The `telegram_received_cb` will be called for each KNX telegram received by the XKNX daemon. Example:
+
+```python
+import asyncio
+from xknx import XKNX
+
+def telegram_received_cb(telegram):
+    print("Telegram received: {0}".format(telegram))
+
+async def main():
+    xknx = XKNX(telegram_received_cb=telegram_received_cb)
+    await xknx.start(daemon_mode=True)
+    await xknx.stop()
+
+# pylint: disable=invalid-name
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+loop.close()
+```
+
+For all devices stored in the `devices` storage (see [above](#devices)) a callback for each update may be defined:
+
+```python
+import asyncio
+from xknx import XKNX, Outlet
+
+
+def device_updated_cb(device):
+    print("Callback received from {0}".format(device.name))
+
+
+async def main():
+    xknx = XKNX(device_updated_cb=device_updated_cb)
+    outlet = Outlet(xknx,
+                    name='TestOutlet',
+                    group_address='1/1/11')
+    xknx.devices.add(outlet)
+
+    await xknx.start(daemon_mode=True)
+
+    await xknx.stop()
+
+# pylint: disable=invalid-name
+loop = asyncio.get_event_loop()
+loop.run_until_complete(main())
+loop.close()
+```
+
+
+
+
