@@ -11,11 +11,6 @@ Shutters are simple representations of blind/roller shutter actuators. With XKNX
 ## [](#header-2)Example
 
 ```python
-from xknx import XKNX,Shutter
-
-# Generate shutter
-xknx = XKNX()
-xknx.start()
 shutter = Shutter(xknx,
                   'TestShutter',
                   group_address_long='1/2/1',
@@ -25,13 +20,10 @@ shutter = Shutter(xknx,
                   travel_time_down=50,
                   travel_time_up=60)
 
-xknx.devices.devices.append(shutter)
+xknx.devices.add(shutter)
 
 # Accessing shutter
 xknx.devices['TestShutter'].set_up()
-
-# Wait until all events are processed
-xknx.join()
 ```
 
 ## [](#header-2)Configuration via **xknx.yaml**
@@ -44,23 +36,11 @@ groups:
         Livingroom.Shutter_1: {group_address_long: '1/4/1', group_address_short: '1/4/2', group_address_position_feedback: '1/4/3', group_address_position: '1/4/4', travel_time_down: 50, travel_time_up: 60 }
 ```
 
-```python
-from xknx import XKNX
-
-xknx = XKNX(config="xknx.yaml")
-
-xknx.start()
-xknx.devices['Livingroom.Shutter_1'].set_up()
-xknx.join()
-```
 
 ## [](#header-2)Interface
 
 
 ```python
-from xknx import XKNX,Shutter
-
-xknx = XKNX()
 shutter = Shutter(xknx,
                   'TestShutter',
                   group_address_long='1/2/1',
@@ -108,7 +88,7 @@ shutter.do('down')
 shutter.do('short_down')
 
 # Requesting state via KNX GROUP WRITE
-shutter.sync_state()
+shutter.sync()
 
 ```
 
