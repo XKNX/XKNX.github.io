@@ -41,7 +41,7 @@ Time objects are usually configured via [`xknx.yaml`](/configuration):
 ```yaml
 groups:
 
-    switch:
+    binary_sensor:
         Livingroom.Switch_1:
             group_address: "1/2/7"
             actions:
@@ -67,7 +67,7 @@ groups:
               - {hook: "off", switch_time: "short", target: Livingroom.Shutter_1, method: short_down}
 
 
-    outlet:
+    switch:
         Livingroom.Outlet_1: {group_address: '1/3/1'}
         Livingroom.Outlet_2: {group_address: '1/3/2'}
 
