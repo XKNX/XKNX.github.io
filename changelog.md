@@ -6,7 +6,7 @@ Changelog
 
 Renamed class `Thermostat` to `Climate` . Plase rename the section within configuration:
 
-````yaml
+```yaml
 groups:
     climate:
         Cellar.Thermostat: {group_address_temperature: '6/2/0'}

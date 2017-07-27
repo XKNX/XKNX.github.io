@@ -104,6 +104,7 @@ climate:
      name: HASS-Kitchen.Temperature
      temperature_address: '6/2/1'
      setpoint_address: '6/2/2'
+```
 
 Roadmap:
 --------
