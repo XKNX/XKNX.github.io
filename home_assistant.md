@@ -112,7 +112,17 @@ device_class and significant_bit are optional.
 
 *Cover*
 
-XXX
+````yaml
+shutter:
+    - platform: xknx
+      name: "HASS.Kitchen.Shutter"
+      move_long_address: '3/0/0'
+      move_short_address: '3/0/1'
+      position_address: '3/0/3'
+      position_state_address: '3/0/2'
+      travelling_time_down: 51
+      travelling_time_up: 61
+```
 
 *Climate:*
 
