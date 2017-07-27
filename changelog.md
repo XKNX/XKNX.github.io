@@ -4,7 +4,15 @@ Changelog
 0.7.x (upcoming version, current dev branch)
 ------------------------
 
-Renamed class Switch to BinarySensor. If you were using the switch class, plase rename them to "binary_sensor" within configuration:
+Renamed class `Thermostat` to `Climate` . Plase rename the section within configuration:
+
+````yaml
+groups:
+    climate:
+        Cellar.Thermostat: {group_address_temperature: '6/2/0'}
+```
+
+Renamed class `Switch` to `BinarySensor`. Plase rename the section within configuration:
 
 ```yaml
 groups:
@@ -13,11 +21,11 @@ groups:
             group_address: '5/0/0'
 ```
 
-Sensors with value_type binary have to change their configuration:
+Sensors with `value_type=binary` are now integrated into the `BinarySensor` class:
 
 ```yaml
 groups:
-    binary_sensor_2:
+    binary_sensor:
         SleepingRoom.Motion.Sensor: {group_address: '6/0/0', device_class: 'motion'}
         ExtraRoom.Motion.Sensor: {group_address: '6/0/1', device_class: 'motion'}
 ```
@@ -30,7 +38,7 @@ groups:
         Kitchen.Thermostat.Presence: {group_address: '3/0/2', device_class: 'motion', significant_bit: 2}
 ```
 
-Renamed Outlet to Switch (Sorry for the confusion...). The configuration now looks like:
+Renamed `Outlet` to `Switch` (Sorry for the confusion...). The configuration now looks like:
 
 ```yaml
 groups:
@@ -40,6 +48,7 @@ groups:
 ```
 
 
+Within `Light` class i introduced an attribute `group_address_brightness_state`. The attribute `group_address_state` was renamed to `group_address_switch_state`. I also removed the attribute `group_address_dimm` (which did not have any implemented logic).
 
 Version 0.6.2
 -------------

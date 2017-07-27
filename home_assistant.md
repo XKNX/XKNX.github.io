@@ -2,14 +2,152 @@
 layout: default
 ---
 
-# [](#header-1)Home Assistant plugin
+Home Assistant plugin
+=====================
 
-[Home Assistant](https://home-assistant.io/) is a great framework for controlling all of your home automation devices.
+Overview
+--------
 
-XKNX interacts easily with Home Assitant but is not (yet) directly integrated into the homeassistant package - so it has to be installed manually
+XKNX interacts easily with [Home Assistant](https://home-assistant.io/) but is not (yet) directly integrated into the homeassistant package - so it has to be installed manually. The XKNX Home Assistant Plugin has the following advantages to the current implementation:
+
+XKNX...
+* ... has [cooperative multitasking via asyncio](https://github.com/XKNX/xknx/blob/master/examples/example_light_state.py) and is 100% thread safe.
+* ... is a Python library that cleanly exposes the API.
+* ... provides support for [routing](https://github.com/XKNX/xknx/blob/master/xknx/io/routing.py) and [tunneling](https://github.com/XKNX/xknx/blob/master/xknx/io/tunnel.py) devices.
+* ... has strong coverage with [unit tests](https://github.com/XKNX/xknx/tree/master/test).
+* ... automatically updates and synchronizes all devices in the background periodically.
+* ... listens for all updates of all devices on the KNX bus and updates the corresponding HASS device.
+* ... has a clear abstraction of data/network/logic-layer.
+* ... provides Heartbeat monitoring for Tunneling connections + clean reconnect if KNX/IP connection failed.
+* ... does clean [connect](https://github.com/XKNX/xknx/blob/master/xknx/io/connect.py) and [disconnect](https://github.com/XKNX/xknx/blob/master/xknx/io/disconnect.py) requests to the tunneling device.
 
 
-## [](#header-2)Installation
+Configuration:
+--------------
+
+*Platform:*
+
+```yaml
+xknx:
+```
+
+Optional, recommended for large KNX installations (>100 devices) and/or if you want to use the XKNX abstraction also for other scripted tools outside HASS:
+
+```yaml
+xknx:
+  config_file: '/path/to/xknx.yaml'
+```
+
+If the autodetection of the KNX/IP device does not work you can specify ip/port of the tunneling device:
+
+```yaml 
+xknx:
+  tunneling:
+    host: '192.168.2.23'
+    port: 3671
+    local_ip: '192.168.2.109'
+```
+
+Explicit connction to a KNX/IP routing device:
+
+```yaml
+xknx:
+  config_file: '/path/to/xknx.yaml'
+  routing:
+     local_ip: '192.168.2.109'
+```
+
+*Light:*
+
+```
+light:
+  - platform: xknx
+    name: HASS-Kitchen-L-1
+    address: '1/0/9'
+    brightness_address: '1/0/11'
+
+  - platform: xknx
+    name: HASS-Kitchen-L-2
+    address: '1/0/12'
+    brightness_address: '1/0/14'
+```
+
+*Switch:*
+
+```
+switch:
+  - platform: xknx
+    name: HASS-Kitchen.Coffee
+    group_address: '1/1/6'
+```
+
+*Sensor:*
+
+```
+sensor:
+  - platform: xknx
+    name: Heating.Valve1
+    address: '2/0/0'
+    value_type: 'percent'
+
+  - platform: xknx
+    name: HASS-Kitchen.Temperature
+    address: '6/2/1'
+    value_type: 'temperature'
+```
+
+*Climate:*
+
+```
+climate:
+   - platform: xknx
+     name: HASS-Kitchen.Temperature
+     temperature_address: '6/2/1'
+     setpoint_address: '6/2/2'
+
+Roadmap:
+--------
+
+* Add valve support.
+* Add support for RTR as an automation plattform
+        - taking temperature from Thermostats (KNX or others)
+        - taking presence detectors
+        - taking window open/close inputs
+        - calculating and setting valve position
+* Add notification plattform
+        - KNX has some text messaging. The texts are displayed e.g. within
+          wall-switches. We can add this as notification plattform
+
+
+Todos:
+------
+
+*HASS MODULE:*
+
+* Add Pydoc, *sigh*, will do this weekend
+* decide about a name: `async_knx`? aknx? or just keep `xknx`? 
+* Add validator for address
+* Decide how to handle actions within HASS (im thinking of a new "pressed two times" feature)
+
+*XKNX*
+
+* Implement a proper logging method within xknx
+* refactor own_address and and own_ip. Considr dropping globals.py.  
+
+*General*
+
+* I dont understand how the KNX setpoint works. I need help to geht this working. Winter is getting closer (at least in the Northern Hemisphere)
+
+
+Known issues:
+-------------
+
+Due to lame multicast support the routing abstraction and the gateway scanner
+only work with python >=3.5.
+
+
+Manual Installation:
+--------------------
 
 *Option 1*: Copy plugin files to your local homassistant configuration directory (`~/.homeassistant/custom_components`):
 
@@ -26,39 +164,3 @@ mkdir -p ~/.homeassistant
 ln -s ~/xknx/home-assistant-plugin/custom_components ~/.homeassistant/custom_components
 ```
 
-## [](#header-2)Configuration
-
-Add the following section to your home assistant configuration (`~/.homeassistant/configuration.yaml`).  `config_file` should define the absolute path of your `xknx.yaml` )
-
-```yaml
-xknx:
-    config_file: '/path/to/xknx.yaml'
-```
-
-If the autodetection of the KNX/IP device does not work you can specify ip/port of the tunneling device:
-
-```yaml
-xknx:
-  config_file: '/path/to/xknx.yaml'
-  tunneling:
-    host: '192.168.2.23'
-    port: 3671
-    local_ip: '192.168.2.109'
-```
-
-If you want to connect via KNX/IP Routing
-
-```yaml
-xknx:
-  config_file: '/path/to/xknx.yaml'
-  routing:
-    local_ip: '192.168.2.109'
-```
-
-## [](#header-2)Cloning XKNX-Homeassistant:
-
-```bash
-git clone git@github.com:XKNX/home-assistant.git
-```
-
-and follow instructions on https://home-assistant.io/developers/development_environment/ (not executing the `git clone` command a second time).

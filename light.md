@@ -14,7 +14,6 @@ The Light object is either a representation of a binary or a dimm actor.
 light = Light(xknx,
               name='TestLight',
               group_address_switch='1/2/3',
-              group_address_dimm='1/2/4',
               group_address_brightness='1/2/5')
 xknx.devices.add(light)
 
@@ -32,11 +31,14 @@ groups:
     light:
 
         # Lights with dimming
-        Kitchen.Light_1:     {group_address_switch: '1/6/1', group_address_dimm: '1/6/2', group_address_brightness: '1/6/3'}
-        Diningroom.Light_1:  {group_address_switch: '1/6/4', group_address_dimm: '1/6/5', group_address_brightness: '1/6/6'}
+        Kitchen.Light_1:     {group_address_switch: '1/6/1', group_address_brightness: '1/6/3'}
+        Diningroom.Light_1:  {group_address_switch: '1/6/4', group_address_brightness: '1/6/6'}
 
         # Light without dimming
         Living-Room.Light_1: {group_address_switch: '1/6/7'}
+
+        # Light with extra addresses for states:
+        Office.Light_1:  {group_address_switch: '1/7/4', group_address_switch_state: '1/7/5', group_address_brightness: '1/7/6', group_address_brightness_state: '1/7/7'}
 ```
 
 
@@ -47,8 +49,9 @@ groups:
 light = Light(xknx,
               name='TestLight',
               group_address_switch='1/2/3',
-              group_address_dimm='1/2/4',
-              group_address_brightness='1/2/5')
+              group_address_switch_state='1/2/4',
+              group_address_brightness='1/2/5',
+              group_address_brightness_state='1/2/6')
 
 # Switching light on
 light.set_on()
