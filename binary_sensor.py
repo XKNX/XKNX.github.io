@@ -71,7 +71,7 @@ groups:
         Livingroom.Outlet_1: {group_address: '1/3/1'}
         Livingroom.Outlet_2: {group_address: '1/3/2'}
 
-    shutter:
+    cover:
         Livingroom.Shutter_1: {group_address_long: 3171, group_address_short: 3172, group_address_position_feedback: 3173, group_address_position: 3174, travelling_time_down: 51, travelling_time_up: 61}
 
 

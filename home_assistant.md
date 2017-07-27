@@ -96,6 +96,24 @@ sensor:
     value_type: 'temperature'
 ```
 
+*Binary Sensor:*
+
+```yaml
+binary_sensor:
+    - platform: xknx
+      name: "Hass.Entrance.Motion.Sensor"
+      address: '6/0/2'
+      device_class: 'motion'
+      #significant_bit: 2
+```
+
+device_class and significant_bit are optional.
+
+
+*Cover*
+
+XXX
+
 *Climate:*
 
 ```

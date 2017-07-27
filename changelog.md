@@ -12,6 +12,15 @@ groups:
         Cellar.Thermostat: {group_address_temperature: '6/2/0'}
 ```
 
+Renamed class `Shutter` to `Cover`. Plase rename the section within configuration:
+
+```yaml
+groups:
+   cover:
+        Livingroom.Shutter_1: {group_address_long: '1/4/1', group_address_short: '1/4/2', group_address_position_feedback: '1/4/3', group_address_position: '1/4/4', travel_time_down: 50, travel_time_up: 60 }
+```
+
+
 Renamed class `Switch` to `BinarySensor`. Plase rename the section within configuration:
 
 ```yaml
