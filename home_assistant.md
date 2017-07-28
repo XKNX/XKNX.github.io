@@ -113,7 +113,7 @@ device_class and significant_bit are optional.
 *Cover*
 
 ````yaml
-shutter:
+cover:
     - platform: xknx
       name: "HASS.Kitchen.Shutter"
       move_long_address: '3/0/0'
