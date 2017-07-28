@@ -153,19 +153,13 @@ Todos:
 
 *HASS MODULE:*
 
-* Add Pydoc, *sigh*, will do this weekend
 * decide about a name: `async_knx`? aknx? or just keep `xknx`? 
 * Add validator for address
 * Decide how to handle actions within HASS (im thinking of a new "pressed two times" feature)
 
-*XKNX*
-
-* Implement a proper logging method within xknx
-* refactor own_address and and own_ip. Considr dropping globals.py.  
-
 *General*
 
-* I dont understand how the KNX setpoint works. I need help to geht this working. Winter is getting closer (at least in the Northern Hemisphere)
+* I do not fully understand how the KNX setpoint works. I need help to geht this working. Winter is getting closer (at least in the Northern Hemisphere)
 
 
 Known issues:
