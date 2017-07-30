@@ -25,7 +25,7 @@ XKNX...
 Configuration:
 --------------
 
-*Platform:*
+### Platform:
 
 ```yaml
 xknx:
@@ -57,7 +57,7 @@ xknx:
      local_ip: '192.168.2.109'
 ```
 
-*Light:*
+### Light:
 
 ```
 light:
@@ -72,7 +72,7 @@ light:
     brightness_address: '1/0/14'
 ```
 
-*Switch:*
+### Switch:
 
 ```
 switch:
@@ -81,7 +81,7 @@ switch:
     group_address: '1/1/6'
 ```
 
-*Sensor:*
+### Sensor:
 
 ```
 sensor:
@@ -96,7 +96,7 @@ sensor:
     value_type: 'temperature'
 ```
 
-*Binary Sensor:*
+### Binary Sensor:
 
 ```yaml
 binary_sensor:
@@ -109,8 +109,29 @@ binary_sensor:
 
 device_class and significant_bit are optional.
 
+You can also attach actions to binary sensors (e.g. to switch on a light when a switch was pressed). In this example I switch on one light when the button was pressed once and two others when the button was pressed a second time.
 
-*Cover*
+```yaml
+    - platform: xknx
+      name: HASS.Livingroom.3Switch3
+      address: '5/0/26'
+      automation:
+        - counter: 1
+          hook: 'on'
+          action:
+            - entity_id: light.hue_color_lamp_1
+              service: homeassistant.turn_on
+        - counter: 2
+          hook: 'on'
+          action:
+            - entity_id: light.hue_bloom_1
+              service: homeassistant.turn_on
+            - entity_id: light.hue_bloom_2
+              service: homeassistant.turn_on
+```
+
+
+### Cover*
 
 ````yaml
 cover:
@@ -124,7 +145,7 @@ cover:
       travelling_time_up: 61
 ```
 
-*Climate:*
+### Climate:
 
 ```
 climate:
@@ -137,7 +158,7 @@ climate:
 Roadmap:
 --------
 
-* Add valve support.
+* Add valve support. I want to control the valves of my floor heating.
 * Add support for RTR as an automation plattform
         - taking temperature from Thermostats (KNX or others)
         - taking presence detectors
@@ -155,11 +176,7 @@ Todos:
 
 * decide about a name: `async_knx`? aknx? or just keep `xknx`? 
 * Add validator for address
-* Decide how to handle actions within HASS (im thinking of a new "pressed two times" feature)
-
-*General*
-
-* I do not fully understand how the KNX setpoint works. I need help to geht this working. Winter is getting closer (at least in the Northern Hemisphere)
+* I do not fully understand how the KNX setpoint works. I need help to geht this working. Winter is getting closer (at least in the Northern Hemisphere).
 
 
 Known issues:
