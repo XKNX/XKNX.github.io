@@ -18,6 +18,8 @@ XKNX is an Asynchronous  Python library for reading and writing [KNX](https://en
 
 XKNX depends on Python >= 3.5. (All prior versions of Python < 3.5 have a bug in their multicast implementation.)
 
+You can install XKNX as Python package via pip3:
+
 ```bash
 sudo pip3 install xknx
 ``` 
@@ -26,7 +28,8 @@ sudo pip3 install xknx
 
 ```python
 import asyncio
-from xknx import XKNX, Light
+from xknx import XKNX
+from xknx.devices import Light
 
 async def main():
     xknx = XKNX()
@@ -34,9 +37,9 @@ async def main():
     light = Light(xknx,
                   name='HelloWorldLight',
                   group_address_switch='1/0/9')
-    light.set_on()
+    await light.set_on()
     await asyncio.sleep(2)
-    light.set_off()
+    await light.set_off()
     await xknx.stop()
 
 

@@ -15,7 +15,7 @@ switch = Switch(xknx, 'TestOutlet', group_address='1/2/3')
 xknx.devices.add(switch)
 
 # Accessing switch
-xknx.devices['TestOutlet'].set_on()
+await xknx.devices['TestOutlet'].set_on()
 ``` 
 
 ## [](#header-2)Configuration via **xknx.yaml**
@@ -36,20 +36,20 @@ groups:
 switch = Switch(xknx, 'TestOutlet', group_address='1/2/3')
 
 # Switching switch on
-switch.set_on()
+await switch.set_on()
 
 # Switching switch off
-switch.set_off()
+await switch.set_off()
 
 # Accessing switch via 'do'
-switch.do('on')
-switch.do('off')
+await switch.do('on')
+await switch.do('off')
 
 # Accessing state
 print(switch.state)
 
 # Requesting state via KNX GROUP WRITE
-switch.sync()
+await switch.sync()
 ```
 
 

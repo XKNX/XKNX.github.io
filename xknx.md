@@ -63,8 +63,8 @@ outlet = Outlet(xknx,
                 group_address='1/1/11')
 xknx.devices.add(outlet)
 
-xknx.devices['TestOutlet'].set_on()
-xknx.devices['TestOutlet'].set_off()
+await xknx.devices['TestOutlet'].set_on()
+await xknx.devices['TestOutlet'].set_off()
 ```
 
 

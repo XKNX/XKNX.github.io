@@ -18,8 +18,8 @@ light = Light(xknx,
 xknx.devices.add(light)
 
 # Accessing light
-xknx.devices['TestLight'].set_on()
-xknx.devices['TestLight'].set_brightness(23)
+await xknx.devices['TestLight'].set_on()
+await xknx.devices['TestLight'].set_brightness(23)
 ``` 
 
 ## [](#header-2)Configuration via **xknx.yaml**
@@ -54,18 +54,18 @@ light = Light(xknx,
               group_address_brightness_state='1/2/6')
 
 # Switching light on
-light.set_on()
+await light.set_on()
 
 # Switching light off
-light.set_off()
+await light.set_off()
 
 # Set brightness
-light.set_brightness(23)
+await light.set_brightness(23)
 
 # Accessing light via 'do'
-light.do('on')
-light.do('off')
-light.do('brightness:80')
+await light.do('on')
+await light.do('off')
+await light.do('brightness:80')
 
 # Accessing state
 print(light.state)
@@ -73,8 +73,8 @@ print(light.supports_dimming)
 print(light.brightness)
 
 
-# Requesting state via KNX GROUP WRITE
-light.state()
+# Requesting current state via KNX GROUP WRITE
+await light.sync()
 ```
 
 

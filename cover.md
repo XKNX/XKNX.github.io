@@ -23,7 +23,7 @@ cover = Cover(xknx,
 xknx.devices.add(cover)
 
 # Accessing cover
-xknx.devices['TestShutter'].set_up()
+await xknx.devices['TestShutter'].set_up()
 ```
 
 ## [](#header-2)Configuration via **xknx.yaml**
@@ -51,22 +51,22 @@ cover = Cover(xknx,
               travel_time_up=60)
 
 # Moving to up position
-cover.set_up()
+await cover.set_up()
 
 # Moving to down position
-cover.set_down()
+await cover.set_down()
 
 # Moving cover a step up
-cover.set_short_up()
+await cover.set_short_up()
 
 # Moving cover a step down
-cover.set_short_down()
+await cover.set_short_down()
 
 # Stopping cover
-cover.stop()
+await cover.stop()
 
 # Moving cover to absolute position
-cover.set_position(50)
+await cover.set_position(50)
 
 # Requesting current state
 # If requested position was not reached yet, XKNX will calculate the position
@@ -82,14 +82,13 @@ is_open = cover.is_open()
 is_closed = cover.is_closed()
 
 # Accessing cover via 'do'
-cover.do('up')
-cover.do('short_up')
-cover.do('down')
-cover.do('short_down')
+await cover.do('up')
+await cover.do('short_up')
+await cover.do('down')
+await cover.do('short_down')
 
 # Requesting state via KNX GROUP WRITE
-cover.sync()
-
+await cover.sync()
 ```
 
 

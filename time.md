@@ -15,7 +15,7 @@ time = Time(xknx, 'TimeTest', group_address='1/2/3')
 xknx.devices.add(time)
 
 # Sending time to knx bus
-xknx.devices['TimeTest'].sync()
+await xknx.devices['TimeTest'].sync()
 ``` 
 
 ## [](#header-2)Configuration via **xknx.yaml**
@@ -60,7 +60,7 @@ xknx = XKNX()
 time = Time(xknx, 'TimeTest', group_address='1/2/3')
 
 # Sending Time to KNX bus 
-time.sync()
+await time.sync()
 ```
 
 

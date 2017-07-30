@@ -41,7 +41,7 @@ async def main():
     xknx = XKNX()
 ```
 
-Initialization of XKNX object. Constructor may take several arguments like a reference to the asyncio-loop or various callbacks for device updates or telegram received. See (XKNX object documentation)[/xknx] for details.
+Initialization of XKNX object. Constructor may take several arguments like a reference to the asyncio-loop or various callbacks for device updates or telegram received. See [XKNX object documentation](/xknx) for details.
 
 ````python
     await xknx.start()

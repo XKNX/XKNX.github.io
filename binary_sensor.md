@@ -5,12 +5,11 @@ layout: default
 Binary Sensor
 =============
 
-
-Can either be a switch in the wall or a motion sensor ...
+Binary sensors which have either the state "on" or "off". Binary sensors could be e.g. a switch in the wall (the thing you press on when switching on the light) or a motion detector. 
 
 Switches are mainly intended to act on input, which means to execute so called `Actions`. An action can be the switching of an outlet or light or the moving of a cover.
 
-The logic within switches can further handle if a button is pressed shortly or not - and trigger different actions (`switch_time: 'long'`  or `switch_time: 'short'`).
+The logic within switches can further handle if a button is pressed once or twice - and trigger different actions. Use the attribute `counter` for this purpose.
 
 ## [](#header-2)Example
 
@@ -45,26 +44,28 @@ groups:
         Livingroom.Switch_1:
             group_address: "1/2/7"
             actions:
-              - {hook: "on", target: Livingroom.Outlet_1, method: "on"}
-              - {hook: "on", target: Livingroom.Outlet_2, method: "on"}
+              - {target: Livingroom.Outlet_1, method: "on"}
+              - {target: Livingroom.Outlet_2, method: "on"}
 
         Livingroom.Switch_2:
             group_address: "1/2/8"
             actions:
-              - {hook: "on", target: Livingroom.Outlet_1, method: "off"}
-              - {hook: "on", target: Livingroom.Outlet_2, method: "off"}
+              - {target: Livingroom.Outlet_1, method: "off"}
+              - {target: Livingroom.Outlet_2, method: "off"}
 
         Livingroom.Switch_3:
             group_address: "1/2/5"
             actions:
-              - {hook: "off", switch_time: "long", target: Livingroom.Shutter_1, method: up}
-              - {hook: "off", switch_time: "short", target: Livingroom.Shutter_1, method: short_up}
+              - {target: Livingroom.Shutter_1, method: up}
+              # Only executed if the button was switched twice:
+              - {counter: 2, target: Livingroom.Shutter_1, method: short_up}
 
         Livingroom.Switch_4:
             group_address: "1/2/6"
             actions:
-              - {hook: "off", switch_time: "long", target: Livingroom.Shutter_1, method: down}
-              - {hook: "off", switch_time: "short", target: Livingroom.Shutter_1, method: short_down}
+              - {target: Livingroom.Shutter_1, method: down}
+              # Only executed if the button was switched twice:
+              - {counter: 2, target: Livingroom.Shutter_1, method: short_down}
 
 
     switch:
@@ -73,9 +74,6 @@ groups:
 
     cover:
         Livingroom.Shutter_1: {group_address_long: 3171, group_address_short: 3172, group_address_position_feedback: 3173, group_address_position: 3174, travelling_time_down: 51, travelling_time_up: 61}
-
-
-
 ```
 
 
