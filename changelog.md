@@ -1,8 +1,8 @@
 Changelog
 =========
 
-0.7.x (upcoming version, current dev branch)
-------------------------
+0.7.0 - Released 2017-07-30
+---------------------------
 
 ### More asyncio:
 
@@ -82,14 +82,14 @@ groups:
 
 Within `Light` class i introduced an attribute `group_address_brightness_state`. The attribute `group_address_state` was renamed to `group_address_switch_state`. I also removed the attribute `group_address_dimm` (which did not have any implemented logic).
 
-Version 0.6.2
--------------
+Version 0.6.2 - Released 2017-07-24
+-----------------------------------
 
 XKNX Tunnel now does hartbeat - and reopens connections which are no longer valid.
 
 
-Version 0.6.0
--------------
+Version 0.6.0 - Released 2017-07-23
+-----------------------------------
 
 Using `asyncio` interface, XKNX has now to be stated and stopped asynchronously:
 
