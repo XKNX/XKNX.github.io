@@ -10,7 +10,7 @@ Overview
 
 XKNX is controlled via a configuration file. Per default the configuration file is  named `xknx.yaml`. 
 
-The configuration file contains two section. The `general` section contains the individual / physical address of the XKNX daemon (`own_address`) and the IP address (`own_ip`) the XKNX daemon should bind to.
+The configuration file contains two section. The `general` section contains the individual / physical address of the XKNX daemon (`own_address`).
 
 Within the `groups` sections all devices are defined. For each type of device more then one section might be specified. You need to append numbers or strings to differentiate the entries, as in the example below. The appended number or string must be unique. 
 
@@ -31,7 +31,6 @@ for device in xknx.devices:
 ```yaml
 general:
     own_address: '15.15.249'
-    own_ip: '127.0.0.1'
 
 groups:
 
