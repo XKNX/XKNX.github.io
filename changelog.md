@@ -1,6 +1,13 @@
 Changelog
 =========
 
+
+0.7.6 - Release 2017-08-09
+--------------------------
+
+Introduced KNX HVAC/Climate support with operation modes (Frost protection, night, comfort).
+
+
 0.7.0 - Released 2017-07-30
 ---------------------------
 
