@@ -22,7 +22,7 @@ Sensors are monitoring temperature, air humidity, pressure etc. from KNX bus.
 * `xknx` is the XKNX object.
 * `name` is the name of the object.
 * `group_address` is the KNX group address of the sensor device.
-* `value_type` controls how the value should be rendered in a human readable representation. The attribut may have may have the values `percent`, `temperature`, `brightness`, `speed_ms` or `current`.
+* `value_type` controls how the value should be rendered in a human readable representation. The attribut may have may have the values `percent`, `temperature`, `illuminance`, `speed_ms` or `current`.
 * `device_class` may be used to store the type of sensor, e.g. "motion" for motion detectors.
 
 
