@@ -6,6 +6,8 @@ layout: default
 
 XKNX is an Asynchronous  Python library for reading and writing [KNX](https://en.wikipedia.org/wiki/KNX_(standard))/IP packets. 
 
+[![Coverage Status](https://coveralls.io/repos/github/XKNX/xknx/badge.svg?branch=master)](https://coveralls.io/github/XKNX/xknx?branch=master)
+
 ## [](#header-2)Overview
 
 * Connects to KNX Routing and Tunnel devices
