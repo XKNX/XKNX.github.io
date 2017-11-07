@@ -8,13 +8,13 @@ Overview
 
 XKNX ships with [Homeassistant](https://home-assistant.io/components/#search/knx), the great platform for home automation!
 
-For development and debugging reasons or to catch up with the newest features you may still use the custom component version of the plugin.
+For development and debugging reasons - or to catch up with the newest features - you may still use the custom component version of the plugin.
 
 
 Manual Installation:
 --------------------
 
-Checkout xknx plugin ideally in your home folder:
+Checkout xknx ideally into your home folder:
 
 ```bash
 cd ~
