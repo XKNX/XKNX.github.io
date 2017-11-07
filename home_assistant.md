@@ -21,7 +21,7 @@ cd ~
 git clone https://github.com/XKNX/xknx.git
 ```
 
-Create a symbolic link to your custom components directory.
+Create a symbolic link to your custom components directory:
 
 ```bash
 mkdir -p ~/.homeassistant
