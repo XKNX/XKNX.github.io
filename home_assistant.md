@@ -6,7 +6,7 @@ layout: default
 Home Assistant Component
 ========================
 
-XKNX ships with [Homeassistant](https://home-assistant.io/components/#search/knx), the great platform for home automation!
+XKNX ships with [Home Assistant](https://home-assistant.io/components/#search/knx), the great platform for home automation!
 
 For development and debugging reasons - or to catch up with the newest features - you may still use the custom component version of the plugin.
 
@@ -33,7 +33,7 @@ Run HASS as usual either via service or by directly typing in `hass`.
 Running HASS with local XKNX library
 ------------------------------------
 
-Even when running hass with the XKNX component, hass will automatically install a xknx library within `.homeassistant/deps/lib/python3.5/site-packages` via pip. This very often causethe problem, that the checked out xknx library is not in sync with the xknx library hass uses. But getting both in sync is easy:
+Even when running hass with the XKNX component, hass will automatically install a xknx library within `.homeassistant/deps/lib/python3.5/site-packages` via pip. This very often causes the problem, that the checked out xknx library is not in sync with the xknx library hass uses. But getting both in sync is easy:
 
 Delete automatically installed version:
 
@@ -41,7 +41,7 @@ Delete automatically installed version:
 rm .homeassistant/deps/lib/python3.5/site-packages/xknx*
 ```
 
-Comment out dependency from xknx.py, otherwise hass will reinstall the xknx library when startup:
+Comment out dependency from xknx.py, otherwise hass would reinstall the xknx library when startup:
 
 ````diff
 julius@xxx ~/xknx:$ git diff -U0 home-assistant-plugin/custom_components/xknx.py 
@@ -61,13 +61,13 @@ export PYTHONPATH=$HOME/xknx
 hass
 ```
 
-Starting from service is also possible, but you have to change the configuration to make sure PYTHONPATH [is set correctly](https://stackoverflow.com/questions/45374910/how-to-pass-environment-variables-to-a-service-started-by-systemd).
+Starting via service is also possible, but you have to change the configuration to make sure PYTHONPATH [is set correctly](https://stackoverflow.com/questions/45374910/how-to-pass-environment-variables-to-a-service-started-by-systemd).
 
 
 Configuration:
 --------------
 
-The configuration works as described within [Homeassistant documentation](https://home-assistant.io/components/#search/knx) with the difference that the component is called `xknx` instead of `knx`.
+The configuration works as described within [Home Assistant documentation](https://home-assistant.io/components/#search/knx) with the difference that the component is called `xknx` instead of `knx`.
 
 ### Platform:
 
