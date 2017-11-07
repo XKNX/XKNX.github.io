@@ -19,10 +19,7 @@ XKNX...
 * ... has a clear abstraction of data/network/logic-layer.
 * ... provides Heartbeat monitoring for Tunneling connections + clean reconnect if KNX/IP connection failed.
 * ... does clean [connect](https://github.com/XKNX/xknx/blob/master/xknx/io/connect.py) and [disconnect](https://github.com/XKNX/xknx/blob/master/xknx/io/disconnect.py) requests to the tunneling device.
-* ... ships with [Home Assistant](https://home-assistant.io/)
-
-
-* [Plugin](http://xknx.io/home_assistant) for the [Home-Assistant](https://home-assistant.io/) automation plattform
+* ... ships with [Home Assistant](https://home-assistant.io/).
 
 ## [](#header-2)Installation
 
