@@ -3,8 +3,8 @@ layout: default
 ---
 
 
-Overview
---------
+Home Assistant Component
+========================
 
 XKNX ships with [Homeassistant](https://home-assistant.io/components/#search/knx), the great platform for home automation!
 
