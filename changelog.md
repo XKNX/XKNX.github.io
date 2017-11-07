@@ -1,6 +1,13 @@
 Changelog
 =========
 
+0.7.7-0.7.18 - Release 2017-11-05
+---------------------------------
+
+* Many iterations and bugfixes to get climate support with setpoint shift working.
+* Support for invert-position and invert-angle within cover.
+* State updater may be switched of within home assistant plugin
+
 
 0.7.6 - Release 2017-08-09
 --------------------------
