@@ -10,10 +10,18 @@ XKNX is an Asynchronous  Python library for reading and writing [KNX](https://en
 
 ## [](#header-2)Overview
 
-* Connects to KNX Routing and Tunnel devices
-* Fully Asynchronous, see [PEP 3156](https://www.python.org/dev/peps/pep-3156/)
-* Easy to interact abstraction for devices
-* Clean abstraction for easy implementation of building automation
+XKNX...
+* ... does [cooperative multitasking via asyncio](https://github.com/XKNX/xknx/blob/master/examples/example_light_state.py) and is 100% thread safe.
+* ... provides support for KNX/IP [routing](https://github.com/XKNX/xknx/blob/master/xknx/io/routing.py) *and* [tunneling](https://github.com/XKNX/xknx/blob/master/xknx/io/tunnel.py) devices.
+* ... has strong coverage with [unit tests](https://github.com/XKNX/xknx/tree/master/test).
+* ... automatically updates and synchronizes all devices in the background periodically.
+* ... listens for all updates of all devices on the KNX bus and updates the corresponding internal objects.
+* ... has a clear abstraction of data/network/logic-layer.
+* ... provides Heartbeat monitoring for Tunneling connections + clean reconnect if KNX/IP connection failed.
+* ... does clean [connect](https://github.com/XKNX/xknx/blob/master/xknx/io/connect.py) and [disconnect](https://github.com/XKNX/xknx/blob/master/xknx/io/disconnect.py) requests to the tunneling device.
+* ... ships with [Home Assistant](https://home-assistant.io/)
+
+
 * [Plugin](http://xknx.io/home_assistant) for the [Home-Assistant](https://home-assistant.io/) automation plattform
 
 ## [](#header-2)Installation
