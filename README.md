@@ -1,5 +1,7 @@
 # XKNX website 
 
+**This repository is deprecated. Use https://github.com/XKNX/xknx instead.**
+
 This is the source for the [XKNX website](http://xknx.io).
 
 # Site preview
